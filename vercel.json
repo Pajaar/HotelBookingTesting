@@ -1,17 +1,35 @@
 {
-  "functions": {
-    "Hotel-Booking-System/*.php": {
-      "runtime": "vercel-php@0.7.3"
-    }
-  },
-  "routes": [
+  "version": 2,
+  "builds": [
     {
-      "src": "/",
-      "dest": "/Hotel-Booking-System/index.php"
+      "src": "**/*.php",
+      "use": "vercel-php@0.7.4"
     },
     {
+      "src": "Hotel-Booking-System/css/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "Hotel-Booking-System/js/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "Hotel-Booking-System/img/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "Hotel-Booking-System/fonts/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "Hotel-Booking-System/scss/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
       "src": "/(.*)",
-      "dest": "/Hotel-Booking-System/$1"
+      "dest": "/$1"
     }
   ]
 }
