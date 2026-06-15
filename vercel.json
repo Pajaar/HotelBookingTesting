@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "Hotel-Booking-System/**/*.php",
+      "src": "Hotel-Booking-System/index.php",
       "use": "@vercel/php"
     }
   ],
