@@ -1,18 +1,17 @@
 {
-    "functions": {
-        "HotelBooking/*.php": {
-            "runtime": "vercel-php@0.7.3"
-        }
-    },
-  "version": 2,
-  "builds": [
-    {
-      "src": "Hotel-Booking-System/index.php",
-      "use": "@vercel/php"
+  "functions": {
+    "Hotel-Booking-System/*.php": {
+      "runtime": "vercel-php@0.7.3"
     }
-  ],
+  },
   "routes": [
-    { "src": "/", "dest": "/Hotel-Booking-System/index.php" },
-    { "src": "/(.*)", "dest": "/Hotel-Booking-System/$1" }
+    {
+      "src": "/",
+      "dest": "/Hotel-Booking-System/index.php"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/Hotel-Booking-System/$1"
+    }
   ]
 }
