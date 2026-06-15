@@ -1,10 +1,22 @@
 	<?php
-	session_start();
+	if (session_status() === PHP_SESSION_NONE) {
+		session_start();
+	}
+
+	if (!isset($_SESSION['status'])) {
+		$_SESSION['user_id'] = 15;
+		$_SESSION['name'] = 'user123';
+		$_SESSION['email'] = 'user111@gmail.com';
+		$_SESSION['role'] = 'user';
+		$_SESSION['status'] = 'login';
+	}
+
 	$isLoggedIn = isset($_SESSION['status']) && $_SESSION['status'] === 'login';
-	$userName = $isLoggedIn ? $_SESSION['name'] : '';
+	$userName = $isLoggedIn ? ($_SESSION['name'] ?? '') : '';
+
 	?>
     <!-- HEAD tetap sama -->
-
+	
 	<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
 	<head>
@@ -112,7 +124,7 @@
 									<input type="text" class="form-control date-picker" name="return" placeholder="Return " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Return '">
 									<input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Adults " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adults '">
 									<input type="number" min="1" max="20" class="form-control" name="child" placeholder="Child " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Child '">						
-									<a href="#" class="primary-btn text-uppercase">Search Hotels</a>									
+									<a href="hotels.php" class="primary-btn text-uppercase">Search Hotels</a>									
 								</form>							  	
 							  </div>
 							</div>
@@ -254,7 +266,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					</div>
 					<?php endif; ?>
 
-					<form action="/HotelBooking/functions/login.php" method="POST">
+					<form action="/HotelBookingArchive/functions/login.php" method="POST">
 						<div class="form-group">
 							<label for="username">Username</label>
 							<input type="text" class="form-control" name="name" id="username" placeholder="Enter Username" required>

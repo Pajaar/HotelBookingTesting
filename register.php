@@ -22,7 +22,7 @@
     <div class="card shadow" style="width: 24rem;">
       <div class="card-body">
         <h3 class="card-title text-center mb-4">Register</h3>
-        <form action="/HotelBooking/functions/register-proses.php" method="POST">
+        <form action="/HotelBookingArchive/functions/register-proses.php" method="POST">
           <div class="mb-3">
             <label for="name" class="form-label">Username</label>
             <input type="text" class="form-control" name="name" id="name" placeholder="Enter Username">
