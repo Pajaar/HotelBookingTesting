@@ -47,6 +47,11 @@ $(document).ready(function() {
     // Auto-show payment modal if redirect from booking
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('show_payment') === '1') {
+        // Pastikan booking_id dari URL masuk ke hidden input form
+        var bookingId = urlParams.get('booking_id');
+        if (bookingId) {
+            $('#modalBookingIdInput').val(bookingId);
+        }
         $('#paymentModal').fadeIn(300);
     }
 });

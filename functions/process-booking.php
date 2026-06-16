@@ -33,7 +33,7 @@ $stmt_room = $conn->prepare("SELECT room_type, price FROM rooms WHERE room_id = 
 $stmt_room->bind_param("i", $room_id);
 $stmt_room->execute();
 $room = $stmt_room->get_result()->fetch_assoc();
-if (!$room) die("Error: Room tidak ditemukan.");
+if (!$room) die("Error: Room tidak ditemukan. room_id=" . $room_id);
 
 $room_price   = $room['price'];
 $tax          = 150000;
@@ -58,8 +58,8 @@ if ($stmt_booking->execute()) {
 
     $conn->close();
 
-    // Redirect langsung ke payment dengan booking_id di URL — tidak pakai session
-    header("Location: ../Hotel-Booking-System/payment.php?booking_id=" . $booking_id);
+    // Redirect balik ke detail-hotel dengan show_payment=1 dan booking_id di URL
+    header("Location: ../Hotel-Booking-System/detail-hotel.php?hotel_id=" . $hotel_id . "&show_payment=1&booking_id=" . $booking_id);
     exit();
 
 } else {

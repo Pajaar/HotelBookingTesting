@@ -19,9 +19,30 @@ $userName = $isLoggedIn ? $_SESSION['name'] : '';
 $show_payment_modal = false;
 $booking_data = null;
 
-if (isset($_GET['show_payment']) && $_GET['show_payment'] == '1' && isset($_SESSION['booking_info'])) {
-    $show_payment_modal = true;
-    $booking_data = $_SESSION['booking_info'];
+// Ambil booking dari DB pakai booking_id di URL (tidak pakai session)
+if (isset($_GET['show_payment']) && $_GET['show_payment'] == '1' && isset($_GET['booking_id'])) {
+    $bid = intval($_GET['booking_id']);
+    $sql_bk = "SELECT b.booking_id, b.total_amount, b.hotel_id,
+                      h.hotel_name,
+                      r.room_type, r.price AS room_price,
+                      bd.check_in, bd.check_out,
+                      DATEDIFF(bd.check_out, bd.check_in) AS nights
+               FROM bookings b
+               JOIN hotels h ON b.hotel_id = h.hotel_id
+               JOIN booking_details bd ON b.booking_id = bd.booking_id
+               JOIN rooms r ON bd.room_id = r.room_id
+               WHERE b.booking_id = ? AND b.status = 'pending'";
+    $stmt_bk = $conn->prepare($sql_bk);
+    $stmt_bk->bind_param("i", $bid);
+    $stmt_bk->execute();
+    $booking_data = $stmt_bk->get_result()->fetch_assoc();
+    if ($booking_data) {
+        $show_payment_modal = true;
+        $booking_data['tax'] = 150000;
+        $booking_data['checkin'] = $booking_data['check_in'];
+        $booking_data['checkout'] = $booking_data['check_out'];
+        $booking_data['total'] = $booking_data['total_amount'];
+    }
 }
 
 // Get hotel_id from URL parameter
