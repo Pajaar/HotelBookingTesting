@@ -1,6 +1,6 @@
-	<?php include __DIR__ . '/../functions/get_hotel.php';
-	$isLoggedIn = isset($_SESSION['status']) && $_SESSION['status'] === 'login';
-	$userName = $isLoggedIn ? $_SESSION['name'] : '';?>
+<?php include __DIR__ . '/../functions/get_hotel.php';
+$isLoggedIn = isset($_SESSION['status']) && $_SESSION['status'] === 'login';
+$userName = $isLoggedIn ? $_SESSION['name'] : '';?>
 
     <!DOCTYPE html>
 	<html lang="zxx" class="no-js">

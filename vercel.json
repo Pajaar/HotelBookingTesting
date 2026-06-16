@@ -3,7 +3,10 @@
   "builds": [
     {
       "src": "**/*.php",
-      "use": "vercel-php@0.7.4"
+      "use": "vercel-php@0.7.4",
+      "config": {
+        "phpIniPath": "php.ini"
+      }
     },
     {
       "src": "Hotel-Booking-System/css/**",

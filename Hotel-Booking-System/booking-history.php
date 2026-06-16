@@ -1,6 +1,6 @@
 <?php
 session_start();
-include(__DIR__ . '/../database.php');
+include (__DIR__ . '/../database.php');
 
 // Cek apakah user sudah login
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'login') {
