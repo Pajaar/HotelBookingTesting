@@ -2,7 +2,7 @@
 session_start();
 include __DIR__ . '/../database.php';
 
-// Cek apakah ada booking_info di session
+// Kalau tidak ada booking_info di session, redirect ke hotels
 if (!isset($_SESSION['booking_info'])) {
     header("Location: hotels.php");
     exit();
@@ -23,15 +23,13 @@ $booking = $_SESSION['booking_info'];
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/payment.css">
     <link rel="stylesheet" href="css/linearicons.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">				
-    <link rel="stylesheet" href="css/nice-select.css">							
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/nice-select.css">
     <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">				
+    <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/detail.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="payment-container">
@@ -84,8 +82,8 @@ $booking = $_SESSION['booking_info'];
                 </div>
             </div>
 
-            <!-- Payment Form -->
-            <form id="paymentForm" method="POST" action="process-payment.php">
+            <!-- Payment Form — action mengarah ke functions/process-payment.php -->
+            <form id="paymentForm" method="POST" action="../functions/process-payment.php">
                 <input type="hidden" name="booking_id" value="<?php echo $booking['booking_id']; ?>">
                 <input type="hidden" name="amount" value="<?php echo $booking['total']; ?>">
 
@@ -99,7 +97,6 @@ $booking = $_SESSION['booking_info'];
                             <span>Kartu Kredit / Debit</span>
                         </div>
                     </label>
-
                     <label class="payment-method-card">
                         <input type="radio" name="payment_method" value="bank_transfer" required>
                         <div class="method-content">
@@ -107,7 +104,6 @@ $booking = $_SESSION['booking_info'];
                             <span>Transfer Bank</span>
                         </div>
                     </label>
-
                     <label class="payment-method-card">
                         <input type="radio" name="payment_method" value="e_wallet" required>
                         <div class="method-content">
