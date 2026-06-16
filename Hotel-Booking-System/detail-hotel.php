@@ -521,7 +521,8 @@ $conn->close();
             </div>
             <div class="summary-row">
                 <span class="label">Guests:</span>
-                <span class="value"><span id="modalAdults"><?php echo $show_payment_modal ? $booking_data['adults'] : ''; ?></span> adults, <span id="modalChildren"><?php echo $show_payment_modal ? $booking_data['children'] : ''; ?></span> children</span>
+                <span id="modalAdults"><?php echo $show_payment_modal ? ($booking_data['adults'] ?? '-') : ''; ?></span> adults, 
+                <span id="modalChildren"><?php echo $show_payment_modal ? ($booking_data['children'] ?? '-') : ''; ?></span> children
             </div>
             <hr>
             <div class="summary-row">
