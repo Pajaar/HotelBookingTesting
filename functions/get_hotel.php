@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../database.php';
+include __DIR__ . '/../database.php';
 
 $hotelImages = [
     1 => 'd1.jpg',
