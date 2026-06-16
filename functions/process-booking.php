@@ -1,5 +1,7 @@
 <?php
 session_start();
+// DEBUG - hapus setelah ketemu masalahnya
+echo "<pre>"; print_r($_POST); echo "</pre>"; exit();
 include __DIR__ . '/../database.php';
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
