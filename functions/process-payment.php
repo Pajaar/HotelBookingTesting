@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../database.php';
+include __DIR__ . '/../database.php';
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     header("Location: ../Hotel-Booking-System/hotels.php");

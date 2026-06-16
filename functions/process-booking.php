@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../database.php';
+include __DIR__ . '/../database.php';
 
 // DEBUG MODE - HAPUS SETELAH BERHASIL
 // die('INI YANG DIPANGGIL: '. __FILE__);

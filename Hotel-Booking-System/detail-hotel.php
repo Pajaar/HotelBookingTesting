@@ -1,5 +1,17 @@
-<?php session_start();
-include '../database.php'; 
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($_SESSION['status'])) {
+    $_SESSION['user_id'] = 15;
+    $_SESSION['name'] = 'user123';
+    $_SESSION['email'] = 'user111@gmail.com';
+    $_SESSION['role'] = 'user';
+    $_SESSION['status'] = 'login';
+}
+
+include __DIR__ . '/../database.php'; 
 
 $isLoggedIn = isset($_SESSION['status']) && $_SESSION['status'] === 'login';
 $userName = $isLoggedIn ? $_SESSION['name'] : '';

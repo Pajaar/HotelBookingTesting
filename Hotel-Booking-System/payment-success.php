@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../database.php'; 
+include __DIR__ . '/../database.php'; 
 $booking_id = isset($_GET['booking_id']) ? intval($_GET['booking_id']) : 0;
 ?>
 <!DOCTYPE html>

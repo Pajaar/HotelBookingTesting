@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../database.php';
+include __DIR__ . '/../database.php';
 
 // Cek apakah ada booking_info di session
 if (!isset($_SESSION['booking_info'])) {
